@@ -2,10 +2,10 @@
 CC = gcc
 CFLAGS = `pkg-config opencv --cflags --libs`
 LDFLAGS = 
-DEPS = blob.h rs232.h
+DEPS = 
 SRCS = $(DEPS:.h=.c) main.c
 OBJS = $(SRCS:.c=.o)
-EXEC = pick
+EXEC = rec
 
 
 %.o: %.c $(DEPS)
