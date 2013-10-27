@@ -42,27 +42,22 @@ int main( int argc, char *argv[] )
 
 	CvCapture *webcam;
 
-	for( i=0; i<4; i++ )
-	{
-		webcam = cvCaptureFromCAM( i );
-		if( webcam )
-		{
-		printf( "Found camera at index %d\n", i );
-		camNo = i;
-		break;
-		}
-	}
+	//for( i=0; i<4; i++ )
+	//{
+	//	webcam = cvCaptureFromCAM( i );
+	//	if( webcam )
+	//	{
+	//	printf( "Found camera at index %d\n", i );
+	//	camNo = i;
+	//	break;
+	//	}
+	//}
+
+	webcam = cvCaptureFromCAM( atoi(argv[1]) );
 
 	IplImage *f;
 
-	/* grab the first few frames for good measure */
-	//for( i=0; i<5; i++ )
-	//{
-	//	f = cvQueryFrame( webcam );
-	
-	//}
 
-	//printf( "successfully grabbed 5 frames\n" );
 
 	cvNamedWindow( "webcam", CV_WINDOW_AUTOSIZE );
 
@@ -91,16 +86,11 @@ int main( int argc, char *argv[] )
 	//printf( "about to start main loop\n" );
 		
 	/* MAIN LOOP */
-	for(;;)
+	while( webcam )
 	{
+		printf( "attempt to grab a frame from camera index %d\n", i );
 		f = cvQueryFrame( webcam );
-
-
-
 		cvShowImage( "webcam", f );
-
-
-
 		cvWaitKey(20);
 		
 	}
